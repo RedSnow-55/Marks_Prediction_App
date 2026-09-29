@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Predicted Marks</title>
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      background: linear-gradient(-45deg, #667eea, #764ba2, #ff6a00, #ffb347);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
+      text-align: center;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      background: rgba(0,0,0,0.45);
+      padding: 3rem 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+      width: 100%;
+      max-width: 400px;
+      transform: scale(0.9);
+      opacity: 0;
+      animation: fadeIn 1s forwards ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+      color: #ffd700;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+      font-weight: 700;
+    }
+
+    span {
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 8px;
+      box-shadow: 0 0 8px #ffd700;
+      display: inline-block;
+      min-width: 60px;
+      font-weight: 600;
+    }
+
+    a.button {
+      margin-top: 1.5rem;
+      display: inline-block;
+      text-decoration: none;
+      padding: 0.8rem 2rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #ffda79, #fca311);
+      color: #3b2f0b;
+      box-shadow: 0 6px 14px rgba(252, 163, 17, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    a.button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 24px rgba(252, 163, 17, 0.9);
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .container { padding: 2rem 1.5rem; }
+      h2 { font-size: 1.3rem; }
+      a.button { font-size: 1rem; padding: 0.7rem 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="region" aria-label="Student information">
+    <h2>Your study hours: <span>{{ hours }}</span></h2>
+    <h2>Your attendance: <span>{{ attendance }}</span>%</h2>
+    <h2>Predicted marks: <span>{{ marks }}</span></h2>
+
+    <a href="{{ '/predict' }}" class="button" aria-label="Predict Again">Predict Again</a>
+    <br>
+    <a href="{{ '/' }}" class="button" aria-label="Back to Home">Back to Home</a>
+  </div>
+</body>
+</html>
